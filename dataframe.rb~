@@ -1,0 +1,16 @@
+#expects ruby 2.1.2
+class DataFrame
+  
+  def 
+
+  def initialize(data:[], headers: [])
+    @data = data
+    @headers = headers
+    @frame = {}
+    if @headers != [] and @data != []
+      for header,ind in @headers.each_with_index
+        @frame[header] = @data[ind]
+      end
+    end
+  end
+end
