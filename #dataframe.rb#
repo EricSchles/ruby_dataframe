@@ -33,12 +33,14 @@ class DataFrame
 
   def to_s
     if @view == "column"
-    print @headers.join(' ')
-    puts "Column by Column view"
-    for column in @data
-      puts column.join(',')
-    end
-    
+      print @headers.join(' ')
+      puts "Column by Column view"
+      for column in @data
+        puts column.join(',')
+      end
+   
+    elsif @view == "row"
+      print
   end
   
 end
