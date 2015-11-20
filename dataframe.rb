@@ -1,14 +1,15 @@
 #expects ruby 2.1.2
 class DataFrame
-  attr_accessor :headers,:data,:frame, :view
+  attr_accessor :headers,:data, :column_frame, :view, :row_frame
   def initialize(data:[], headers: [],view:"column")
     @data = data
     @headers = headers
-    @frame = {}
+    @column_frame = {}
+    @row_frame = {}
     @view = view
     if @headers != [] and @data != []
       for header,ind in @headers.each_with_index
-        @frame[header] = @data[ind]
+        @column_frame[header] = @data[ind]
       end
     end
   end
@@ -33,14 +34,17 @@ class DataFrame
 
   def to_s
     if @view == "column"
-    print @headers.join(' ')
-    puts "Column by Column view"
-    for column in @data
-      puts column.join(',')
+      print @headers.join(' ')
+      puts "Column by Column view"
+      for column in @data
+        puts column.join(',')
+      end
+   
+    elsif @view == "row"
+      print @headers.join(' ')
+      
     end
-    
   end
-  
 end
 
 
