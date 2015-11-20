@@ -4,9 +4,9 @@ class DataFrame
   def initialize(data:[], headers: [],view:"column")
     @data = data
     @headers = headers
-    @index_mapping = []
+    @index_mapping = {}
     @frame = [] # a list of lists
-    
+    #the index_mapping is going to keep an internal set of referenc 
   end
   
   def generate_frame(data,headers: [])
