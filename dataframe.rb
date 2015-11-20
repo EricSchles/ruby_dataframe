@@ -1,10 +1,11 @@
 #expects ruby 2.1.2
 class DataFrame
-  attr_accessor :headers,:data,:frame
-  def initialize(data:[], headers: [])
+  attr_accessor :headers,:data,:frame, :view
+  def initialize(data:[], headers: [],view:"Column")
     @data = data
     @headers = headers
     @frame = {}
+    @view = view
     if @headers != [] and @data != []
       for header,ind in @headers.each_with_index
         @frame[header] = @data[ind]
@@ -30,11 +31,11 @@ class DataFrame
     end
   end
 
-  def to_s()
+  def to_s
     print @headers.join(' ')
-    puts
+    puts "Column by Column view"
     for column in @data
-      puts column
+      puts column.join(',')
     end
     
   end
@@ -46,5 +47,4 @@ if __FILE__ == $0
   df = DataFrame.new
   df.generate_frame([["Hello there","Hi"],["Ahoy friends","what up"]],headers: ["greetings","replies"])
   puts df
-  
 end
