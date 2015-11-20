@@ -32,6 +32,7 @@ class DataFrame
 
   def to_s()
     print @headers.join(' ')
+    puts
     for column in @data
       puts column
     end
@@ -44,9 +45,6 @@ end
 if __FILE__ == $0
   df = DataFrame.new
   df.generate_frame([["Hello there","Hi"],["Ahoy friends","what up"]],headers: ["greetings","replies"])
-  puts "headers"
-  puts df.headers
-  puts "data"
-  puts df.data
+  puts df
   
 end
